@@ -3,17 +3,19 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import BlogPost from "../layouts/BlogPost.astro";
 import { getCollection } from "astro:content";
 const allPosts = await getCollection("posts");
-const pageTitle = "My Astro Blog";
+const pageTitle = "Blog";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <p>This is where I will post about my journey learning Astro.</p>
-
-  <ul>
+  <div class="max-w-4xl mx-auto mt-8">
     {
       allPosts.map((post) => (
-        <BlogPost url={`/posts/${post.slug}`} title={post.data.title} />
+        <BlogPost
+          url={`/posts/${post.slug}`}
+          title={post.data.title}
+          datetime={post.data.pubDate}
+        />
       ))
     }
-  </ul>
+  </div>
 </BaseLayout>

@@ -1,5 +1,10 @@
 ---
-const { url, title } = Astro.props;
+const { url, title, datetime } = Astro.props;
 ---
 
-<li><a href={url}>{title}</a></li>
+<div class="px-6 py-4">
+  <a href={url}>
+    <h2 class="text-2xl font-bold text-gray-800">{title}</h2>
+  </a>
+  <p class="text-gray-600 text-sm mt-2">{datetime.toString().slice(0, 10)}</p>
+</div>
